@@ -21,6 +21,39 @@ class Tindakan extends Controller
   public function create()
   {
     if ($this->model('TindakanModel')->insertData($_POST) > 0) {
+      Flasher::setFlash('Tindakan', 'berhasil', 'ditambahkan', 'success');
+      header('Location: ' . BASE_URL . '/tindakan');
+      exit;
+    } else {
+      Flasher::setFlash('Tindakan', 'gagal', 'ditambahkan', 'danger');
+      header('Location: ' . BASE_URL . '/tindakan');
+      exit;
+    }
+  }
+  public function delete($id)
+  {
+    if ($this->model('TindakanModel')->deleteData($id) > 0) {
+      Flasher::setFlash('Tindakan', 'berhasil', 'dihapus', 'success');
+      header('Location: ' . BASE_URL . '/tindakan');
+      exit;
+    } else {
+      Flasher::setFlash('Tindakan', 'gagal', 'dihapus', 'danger');
+      header('Location: ' . BASE_URL . '/tindakan');
+      exit;
+    }
+  }
+  public function getId()
+  {
+    echo json_encode($this->model('TindakanModel')->getDataById($_POST['id']));
+  }
+  public function update()
+  {
+    if ($this->model('TindakanModel')->updateData($_POST) > 0) {
+      Flasher::setFlash('Tindakan', 'berhasil', 'diedit', 'success');
+      header('Location: ' . BASE_URL . '/tindakan');
+      exit;
+    } else {
+      Flasher::setFlash('Tindakan', 'gagal', 'diedit', 'danger');
       header('Location: ' . BASE_URL . '/tindakan');
       exit;
     }

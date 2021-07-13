@@ -21,7 +21,41 @@ class User extends Controller
   public function create()
   {
     if ($this->model('UserModel')->insertData($_POST) > 0) {
-      header('Location: ' . BASE_URL . '/User');
+      Flasher::setFlash('User', 'berhasil', 'ditambahkan', 'success');
+
+      header('Location: ' . BASE_URL . '/user');
+      exit;
+    } else {
+      Flasher::setFlash('User', 'gagal', 'ditambahkan', 'danger');
+      header('Location: ' . BASE_URL . '/user');
+      exit;
+    }
+  }
+  public function delete($id)
+  {
+    if ($this->model('UserModel')->deleteData($id) > 0) {
+      Flasher::setFlash('User', 'berhasil', 'dihapus', 'success');
+      header('Location: ' . BASE_URL . '/user');
+      exit;
+    } else {
+      Flasher::setFlash('User', 'gagal', 'dihapus', 'danger');
+      header('Location: ' . BASE_URL . '/user');
+      exit;
+    }
+  }
+  public function getId()
+  {
+    echo json_encode($this->model('UserModel')->getDataById($_POST['id']));
+  }
+  public function update()
+  {
+    if ($this->model('UserModel')->updateData($_POST) > 0) {
+      Flasher::setFlash('User', 'berhasil', 'diedit', 'success');
+      header('Location: ' . BASE_URL . '/user');
+      exit;
+    } else {
+      Flasher::setFlash('User', 'gagal', 'diedit', 'danger');
+      header('Location: ' . BASE_URL . '/user');
       exit;
     }
   }

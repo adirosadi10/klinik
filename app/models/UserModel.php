@@ -32,10 +32,26 @@ class UserModel
     $this->db->execute();
     return $this->db->rowCounts();
   }
-  public function updateData()
+  public function updateData($data)
   {
+    $query = "UPDATE user SET id_pegawai = :id_pegawai,username = :username,email = :email,level = :level WHERE id = :id";
+    $this->db->query($query);
+    $this->db->bind('id', $data['id']);
+    $this->db->bind('id_pegawai', $data['id_pegawai']);
+    $this->db->bind('username', $data['username']);
+    $this->db->bind('email', $data['email']);
+    $this->db->bind('level', $data['level']);
+
+    $this->db->execute();
+    return $this->db->rowCounts();
   }
-  public function deleteData()
+  public function deleteData($id)
   {
+    $query = "DELETE FROM user WHERE id=:id";
+    $this->db->query($query);
+    $this->db->bind('id', $id);
+
+    $this->db->execute();
+    return $this->db->rowCounts();
   }
 }

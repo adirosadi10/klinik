@@ -36,10 +36,30 @@ class PendaftaranModel
     $this->db->execute();
     return $this->db->rowCounts();
   }
-  public function updateData()
+  public function updateData($data)
   {
+    $query = "UPDATE pendaftaran SET status = :status WHERE id = :id";
+    $this->db->query($query);
+    $this->db->bind('id', $data['id']);
+    $this->db->bind('status', 1);
+
+
+    $periksa = "INSERT INTO periksa VALUES ('',:id_daftar,'','',:status)";
+    $id_daftar = $data['id'];
+    $this->db->query($periksa);
+    $this->db->bind('id_daftar', $id_daftar);
+    $this->db->bind('status', 0);
+
+    $this->db->execute();
+    return $this->db->rowCounts();
   }
-  public function deleteData()
+  public function deleteData($id)
   {
+    $query = "DELETE FROM pendaftaran WHERE id=:id";
+    $this->db->query($query);
+    $this->db->bind('id', $id);
+
+    $this->db->execute();
+    return $this->db->rowCounts();
   }
 }

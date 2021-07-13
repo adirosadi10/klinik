@@ -21,6 +21,39 @@ class Pegawai extends Controller
   public function create()
   {
     if ($this->model('PegawaiModel')->insertData($_POST) > 0) {
+      Flasher::setFlash('Pegawai', 'berhasil', 'ditambahkan', 'success');
+      header('Location: ' . BASE_URL . '/pegawai');
+      exit;
+    } else {
+      Flasher::setFlash('Pegawai', 'gagal', 'ditambahkan', 'danger');
+      header('Location: ' . BASE_URL . '/pegawai');
+      exit;
+    }
+  }
+  public function delete($id)
+  {
+    if ($this->model('PegawaiModel')->deleteData($id) > 0) {
+      Flasher::setFlash('Pegawai', 'berhasil', 'dihapus', 'success');
+      header('Location: ' . BASE_URL . '/pegawai');
+      exit;
+    } else {
+      Flasher::setFlash('Pegawai', 'gagal', 'dihapus', 'danger');
+      header('Location: ' . BASE_URL . '/pegawai');
+      exit;
+    }
+  }
+  public function getId()
+  {
+    echo json_encode($this->model('PegawaiModel')->getDataById($_POST['id']));
+  }
+  public function update()
+  {
+    if ($this->model('PegawaiModel')->updateData($_POST) > 0) {
+      Flasher::setFlash('Pegawai', 'berhasil', 'diedit', 'success');
+      header('Location: ' . BASE_URL . '/pegawai');
+      exit;
+    } else {
+      Flasher::setFlash('Pegawai', 'gagal', 'diedit', 'danger');
       header('Location: ' . BASE_URL . '/pegawai');
       exit;
     }

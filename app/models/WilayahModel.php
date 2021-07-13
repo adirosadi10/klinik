@@ -32,10 +32,27 @@ class WilayahModel
     $this->db->execute();
     return $this->db->rowCounts();
   }
-  public function updateData()
+  public function updateData($data)
   {
+    $query = "UPDATE wilayah SET zona = :zona,provinsi = :provinsi,distrik = :distrik,kecamatan = :kecamatan,kelurahan = :kelurahan WHERE id = :id";
+    $this->db->query($query);
+    $this->db->bind('id', $data['id']);
+    $this->db->bind('zona', $data['zona']);
+    $this->db->bind('provinsi', $data['provinsi']);
+    $this->db->bind('distrik', $data['distrik']);
+    $this->db->bind('kecamatan', $data['kecamatan']);
+    $this->db->bind('kelurahan', $data['kelurahan']);
+
+    $this->db->execute();
+    return $this->db->rowCounts();
   }
-  public function deleteData()
+  public function deleteData($id)
   {
+    $query = "DELETE FROM wilayah WHERE id=:id";
+    $this->db->query($query);
+    $this->db->bind('id', $id);
+
+    $this->db->execute();
+    return $this->db->rowCounts();
   }
 }

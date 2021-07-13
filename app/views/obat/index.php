@@ -23,7 +23,7 @@
         <td><?= $obat['nama_obat']; ?></td>
         <td>
           <a class="tampilModalUbah" data-id="<?= $obat['id']; ?>" data-bs-toggle="modal" data-bs-target="#tambah">Edit</a> |
-          <a href="<?= BASE_URL; ?>/obat/delete/<?= $obat['id']; ?>" onclick="return confirm('yakin ?');">Hapus</a>
+          <a href="<?= BASE_URL; ?>/obat/delete/<?= $obat['id']; ?>" onclick="return confirm('Apakah anda yakin akan menghapus data?');">Hapus</a>
         </td>
       </tr>
     <?php } ?>
@@ -41,23 +41,23 @@
           <input type="hidden" id="id" name="id">
           <div class="mb-3">
             <label for="no_obat" class="form-label">No. Obat</label>
-            <input type="number" class="form-control" id="no_obat" name="no_obat">
+            <input type="number" required class="form-control" id="no_obat" name="no_obat">
           </div>
           <div class="mb-3">
             <label for="nama_obat" class="form-label">Nama Obat</label>
-            <input type="text" class="form-control" id="nama_obat" name="nama_obat">
+            <input type="text" required class="form-control" id="nama_obat" name="nama_obat">
           </div>
           <div class="mb-3">
             <label for="jenis" class="form-label">Jenis </label>
-            <input type="text" class="form-control" id="jenis" name="jenis">
+            <input type="text" required class="form-control" id="jenis" name="jenis">
           </div>
           <div class="mb-3">
             <label for="harga" class="form-label">Harga</label>
-            <input type="number" class="form-control" id="harga" name="harga">
+            <input type="number" required class="form-control" id="harga" name="harga">
           </div>
           <div class="mb-3">
             <label for="stok" class="form-label">Stok</label>
-            <input type="number" class="form-control" id="stok" name="stok">
+            <input type="number" required class="form-control" id="stok" name="stok">
           </div>
       </div>
       <div class="modal-footer">

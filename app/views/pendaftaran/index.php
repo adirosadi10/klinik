@@ -1,6 +1,9 @@
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambah">
+<button type="button" class="tombolModal mt-2 btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambah">
   Tambah
 </button>
+<div class="row mt-3">
+  <?php Flasher::flash(); ?>
+</div>
 <table class="table table-hover">
   <thead>
     <tr>
@@ -18,6 +21,11 @@
       <tr>
         <td><?= $no++; ?></td>
         <td><?= $pendaftaran['nama_pasien']; ?></td>
+        <td>
+          <a class="tampilModalDetail" data-id="<?= $pendaftaran['id']; ?>" data-bs-toggle="modal" data-bs-target="#tambah">Detail</a> |
+          <a href="<?= BASE_URL; ?>/pendaftaran/update/<?= $pendaftaran['id']; ?>" onclick="return confirm('Apakah anda yakin akan memproses ini?');">Proses</a> |
+          <a href="<?= BASE_URL; ?>/pendaftaran/delete/<?= $pendaftaran['id']; ?>" onclick="return confirm('Apakah anda yakin akan menghapus data?');">Hapus</a>
+        </td>
       </tr>
     <?php } ?>
   </tbody>
@@ -26,11 +34,12 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Tambah Data Pegawai</h5>
+        <h5 class="modal-title" id="modalLabel">Tambah Data Pendaftaran</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="<?= BASE_URL; ?>/pendaftaran/create" method="POST">
+          <input type="hidden" id="id" name="id">
           <div class="mb-3">
             <label for="no_daftar" class="form-label">No. pendaftaran</label>
             <input type="number" class="form-control" id="no_daftar" name="no_daftar">
@@ -72,10 +81,11 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Tambah</button>
+        <button id="tmbl" type="submit" class="btn btn-primary">Tambah</button>
         </form>
       </div>
     </div>
   </div>
 </div>
 </div>
+<script src="<?= BASE_URL; ?>/js/pendaftaran.js" type="text/javascript"></script>
