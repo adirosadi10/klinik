@@ -32,10 +32,27 @@ class ObatModel
     $this->db->execute();
     return $this->db->rowCounts();
   }
-  public function updateData()
+  public function updateData($data)
   {
+    $query = "UPDATE obat SET no_obat = :no_obat,nama_obat=:nama_obat,jenis=:jenis,harga=:harga,stok=:stok WHERE id =:id";
+    $this->db->query($query);
+    $this->db->bind('id', $data['id']);
+    $this->db->bind('no_obat', $data['no_obat']);
+    $this->db->bind('nama_obat', $data['nama_obat']);
+    $this->db->bind('jenis', $data['jenis']);
+    $this->db->bind('harga', $data['harga']);
+    $this->db->bind('stok', $data['stok']);
+
+    $this->db->execute();
+    return $this->db->rowCounts();
   }
-  public function deleteData()
+  public function deleteData($id)
   {
+    $query = "DELETE FROM obat WHERE id=:id";
+    $this->db->query($query);
+    $this->db->bind('id', $id);
+
+    $this->db->execute();
+    return $this->db->rowCounts();
   }
 }
