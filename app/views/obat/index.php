@@ -1,11 +1,23 @@
-<button type="button" class="btn btn-primary tombolModal mt-2" data-bs-toggle="modal" data-bs-target="#tambah">
-  Tambah
-</button>
+<div class="row">
+  <div class="col-auto">
+    <form action="<?= BASE_URL; ?>/obat/search" method="post">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Cari data obat..." id="keyword" name="keyword" autocomplete="off">
+        <button class="btn btn-primary" type="submit" id="tmblCari">Cari</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-auto">
+    <button type="button" class="btn btn-primary tombolModal" data-bs-toggle="modal" data-bs-target="#tambah">
+      Tambah
+    </button>
+  </div>
+</div>
 <div class="row mt-3">
   <?php Flasher::flash(); ?>
 </div>
 <table class="table table-hover">
-  <thead>
+  <thead class="table-primary">
     <tr>
       <th>No.</th>
       <th>Id Pegawai</th>

@@ -58,4 +58,13 @@ class Obat extends Controller
       exit;
     }
   }
+  public function search()
+  {
+    $data['title'] = 'Obat';
+    $data['subTitle'] = 'Daftar Obat';
+    $data['obat'] = $this->model('ObatModel')->searchData();
+    $this->view('templates/header', $data);
+    $this->view('obat/index', $data);
+    $this->view('templates/footer');
+  }
 }

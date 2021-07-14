@@ -42,7 +42,7 @@ class PendaftaranModel
     $this->db->query($query);
     $this->db->bind('id', $data['id']);
     $this->db->bind('status', 1);
-
+    $this->db->execute();
 
     $periksa = "INSERT INTO periksa VALUES ('',:id_daftar,'','',:status)";
     $id_daftar = $data['id'];
