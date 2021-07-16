@@ -20,6 +20,7 @@ class User extends Controller
   }
   public function create()
   {
+
     if ($this->model('UserModel')->insertData($_POST) > 0) {
       Flasher::setFlash('User', 'berhasil', 'ditambahkan', 'success');
 

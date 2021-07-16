@@ -5,6 +5,7 @@ class Pendaftaran extends Controller
   {
     $data['title'] = 'Pendaftaran';
     $data['subTitle'] = 'Daftar Pendaftaran';
+    $data['zona'] = $this->model('WilayahModel')->getAll();
     $data['pendaftaran'] = $this->model('PendaftaranModel')->getAll();
     $this->view('templates/header', $data);
     $this->view('pendaftaran/index', $data);
@@ -21,7 +22,7 @@ class Pendaftaran extends Controller
   public function create()
   {
     if ($this->model('PendaftaranModel')->insertData($_POST) > 0) {
-      Flasher::setFlash('Pendaftaran', 'gagal', 'ditambahkan', 'success');
+      Flasher::setFlash('Pendaftaran', 'berhasil', 'ditambahkan', 'success');
       header('Location: ' . BASE_URL . '/pendaftaran');
       exit;
     } else {

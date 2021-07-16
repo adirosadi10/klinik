@@ -7,7 +7,6 @@ $(document).ready(function () {
     $("#nama_obat").val("");
     $("#jenis").val("");
     $("#harga").val("");
-    $("#stok").val("");
   });
   $(".tampilModalUbah").on("click", function () {
     $("#modalLabel").html("Edit Data Obat");
@@ -28,7 +27,6 @@ $(document).ready(function () {
         $("#nama_obat").val(data.nama_obat);
         $("#jenis").val(data.jenis);
         $("#harga").val(data.harga);
-        $("#stok").val(data.stok);
       },
     });
   });

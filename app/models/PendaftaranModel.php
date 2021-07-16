@@ -10,7 +10,9 @@ class PendaftaranModel
   }
   public function getAll()
   {
-    $this->db->query('SELECT * FROM ' . $this->table);
+    $status = 0;
+    $this->db->query('SELECT * FROM pendaftaran WHERE status = :status');
+    $this->db->bind('status', $status);
     return $this->db->resultSet();
   }
   public function getDataById($id)
@@ -21,7 +23,8 @@ class PendaftaranModel
   }
   public function insertData($data)
   {
-    $query = "INSERT INTO pendaftaran VALUES ('',:no_daftar,:nama_pasien,:jk,:tmp_lahir,:tgl_lahir,:id_wilayah,:alamat,:no_hp,:status)";
+    $date = date('now');
+    $query = "INSERT INTO pendaftaran VALUES ('',:no_daftar,:nama_pasien,:jk,:tmp_lahir,:tgl_lahir,:id_wilayah,:alamat,:no_hp,:status,:created_at)";
     $this->db->query($query);
     $this->db->bind('no_daftar', $data['no_daftar']);
     $this->db->bind('nama_pasien', $data['nama_pasien']);
@@ -32,6 +35,7 @@ class PendaftaranModel
     $this->db->bind('alamat', $data['alamat']);
     $this->db->bind('no_hp', $data['no_hp']);
     $this->db->bind('status', 0);
+    $this->db->bind('created_at', $date);
 
     $this->db->execute();
     return $this->db->rowCounts();
@@ -44,13 +48,15 @@ class PendaftaranModel
     $this->db->bind('status', 1);
     $this->db->execute();
 
-    $periksa = "INSERT INTO periksa VALUES ('',:id_daftar,'','',:status)";
+    $periksa = "INSERT INTO periksa VALUES ('',:id_daftar,'','',:status,:created_at)";
+    $date = date('now');
     $id_daftar = $data['id'];
     $this->db->query($periksa);
     $this->db->bind('id_daftar', $id_daftar);
     $this->db->bind('status', 0);
-
+    $this->db->bind('created_at', $date);
     $this->db->execute();
+
     return $this->db->rowCounts();
   }
   public function deleteData($id)

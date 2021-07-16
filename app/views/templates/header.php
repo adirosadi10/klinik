@@ -17,22 +17,29 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="<?= BASE_URL; ?>/home">
         <img src="<?= BASE_URL . "/img/logo.ico" ?>" style="width:50px" alt="">
       </a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="<?= BASE_URL; ?>/home">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?= BASE_URL; ?>/pendaftaran">Pendaftaran</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pemeriksaan</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Pemeriksaan
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="<?= BASE_URL; ?>/periksa">Tindakan</a></li>
+              <li><a class="dropdown-item" href="<?= BASE_URL; ?>/periksa/dosisObat">Pemberian Obat</a></li>
+            </ul>
           </li>
+
           <li class="nav-item">
-            <a class="nav-link" href="#">Pembayaran</a>
+            <a class="nav-link" href="<?= BASE_URL; ?>/transaksi">Pembayaran</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -57,9 +64,9 @@
             </ul>
           </li>
         </ul>
+        <label class="me-5">Admin</label>
         <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <a class="btn btn-outline-success" type="submit">LogOut</a>
         </form>
       </div>
     </div>

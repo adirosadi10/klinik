@@ -8,10 +8,11 @@
   <thead>
     <tr>
       <th>No.</th>
-      <th>Id Pegawai</th>
-      <th>Username</th>
-      <th>Email</th>
-      <th>Level</th>
+      <th>Nama Pasien</th>
+      <th>Gender</th>
+      <th>Tempat, Tanggal lahir</th>
+      <th>Alamat</th>
+      <th>Aksi</th>
     </tr>
   </thead>
   <tbody>
@@ -21,6 +22,9 @@
       <tr>
         <td><?= $no++; ?></td>
         <td><?= $pendaftaran['nama_pasien']; ?></td>
+        <td><?= $pendaftaran['jk']; ?></td>
+        <td><?= $pendaftaran['tmp_lahir'] . ', ' . $pendaftaran['tgl_lahir']; ?></td>
+        <td><?= $pendaftaran['alamat']; ?></td>
         <td>
           <a class="tampilModalProses" data-id="<?= $pendaftaran['id']; ?>" data-bs-toggle="modal" data-bs-target="#tambah">Proses</a> |
           <a href="<?= BASE_URL; ?>/pendaftaran/delete/<?= $pendaftaran['id']; ?>" onclick="return confirm('Apakah anda yakin akan menghapus data?');">Hapus</a>
@@ -65,8 +69,9 @@
           <div id="Gid_wilayah" class="mb-3">
             <label for="id_wilayah" class="form-label">Zona</label>
             <select id="id_wilayah" name="id_wilayah" class="form-select" aria-label="Default select example">
-              <option value="1">1</option>
-              <option value="2">2</option>
+              <?php foreach ($data['zona'] as $zona) { ?>
+                <option value="<?= $zona['id']; ?>"><?= $zona['provinsi'] . '-' . $zona['distrik'] . '-' . $zona['kecamatan'] . '-' . $zona['kelurahan']; ?></option>
+              <?php } ?>
             </select>
           </div>
           <div id="Galamat" class="mb-3">

@@ -20,10 +20,10 @@
   <thead class="table-primary">
     <tr>
       <th>No.</th>
-      <th>Id Pegawai</th>
-      <th>Username</th>
-      <th>Email</th>
-      <th>Level</th>
+      <th>Nama Obat</th>
+      <th>Jenis</th>
+      <th>Harga</th>
+      <th>Aksi</th>
     </tr>
   </thead>
   <tbody>
@@ -33,6 +33,8 @@
       <tr>
         <td><?= $no++; ?></td>
         <td><?= $obat['nama_obat']; ?></td>
+        <td><?= $obat['jenis']; ?></td>
+        <td><?= $obat['harga']; ?></td>
         <td>
           <a class="tampilModalUbah" data-id="<?= $obat['id']; ?>" data-bs-toggle="modal" data-bs-target="#tambah">Edit</a> |
           <a href="<?= BASE_URL; ?>/obat/delete/<?= $obat['id']; ?>" onclick="return confirm('Apakah anda yakin akan menghapus data?');">Hapus</a>
@@ -66,10 +68,6 @@
           <div class="mb-3">
             <label for="harga" class="form-label">Harga</label>
             <input type="number" required class="form-control" id="harga" name="harga">
-          </div>
-          <div class="mb-3">
-            <label for="stok" class="form-label">Stok</label>
-            <input type="number" required class="form-control" id="stok" name="stok">
           </div>
       </div>
       <div class="modal-footer">

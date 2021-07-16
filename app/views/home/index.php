@@ -1,1 +1,0 @@
-<p>INI HOME <?= $data['nama']; ?></p>

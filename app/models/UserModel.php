@@ -21,13 +21,18 @@ class UserModel
   }
   public function insertData($data)
   {
+
+    $username = strtolower(stripcslashes($data['username']));
+    $password = password_hash($data['password'], PASSWORD_DEFAULT);
+
     $query = "INSERT INTO user VALUES ('',:id_pegawai,:username,:email,:password,:level)";
     $this->db->query($query);
     $this->db->bind('id_pegawai', $data['id_pegawai']);
-    $this->db->bind('username', $data['username']);
+    $this->db->bind('username', $username);
     $this->db->bind('email', $data['email']);
-    $this->db->bind('password', $data['password']);
+    $this->db->bind('password', $password);
     $this->db->bind('level', $data['level']);
+
 
     $this->db->execute();
     return $this->db->rowCounts();
@@ -53,5 +58,8 @@ class UserModel
 
     $this->db->execute();
     return $this->db->rowCounts();
+  }
+  public function loginUser()
+  {
   }
 }
