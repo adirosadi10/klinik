@@ -20,6 +20,13 @@ class PeriksaModel
     $this->db->bind('status', 1);
     return $this->db->resultSet();
   }
+  public function getDetail($id)
+  {
+    $this->db->query('SELECT * FROM periksaDetail WHERE id_periksa =:id_periksa');
+    $this->db->bind('id_periksa', $id);
+
+    return $this->db->resultSet();
+  }
   public function insertData($data)
   {
     $detail = "INSERT periksaDetail VALUES ('',:id_periksa,:id_obat,:jumlah) ";
@@ -46,11 +53,6 @@ class PeriksaModel
     $this->db->bind('id_tindakan', $data['id_tindakan']);
     $this->db->bind('keterangan', $data['keterangan']);
     $this->db->bind('status', 1);
-    $this->db->execute();
-
-    $detail = "INSERT periksaDetail VALUES ('',:id_periksa,'','') ";
-    $this->db->query($detail);
-    $this->db->bind('id_periksa', $id_periksa);
     $this->db->execute();
 
     return $this->db->rowCounts();

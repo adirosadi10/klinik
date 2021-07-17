@@ -34,7 +34,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="<?= BASE_URL; ?>/periksa">Tindakan</a></li>
-              <li><a class="dropdown-item" href="<?= BASE_URL; ?>/periksa/dosisObat">Pemberian Obat</a></li>
+              <li><a class="dropdown-item" href="<?= BASE_URL; ?>/periksaDetail">Pemberian Obat</a></li>
             </ul>
           </li>
 

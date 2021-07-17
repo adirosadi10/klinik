@@ -22,20 +22,33 @@ class TransaksiModel
   }
   public function insertData($data)
   {
-    $query = "INSERT INTO transaksi VALUES ('',:no_transaksi,:nama_transaksi,:jenis,:harga,:stok)";
-    $this->db->query($query);
-    $this->db->bind('no_transaksi', $data['no_transaksi']);
-    $this->db->bind('nama_transaksi', $data['nama_transaksi']);
-    $this->db->bind('jenis', $data['jenis']);
-    $this->db->bind('harga', $data['harga']);
-    $this->db->bind('stok', $data['stok']);
+    $query = "INSERT INTO transaksi VALUES ('',:id_periksa,:no_transaksi,:total,'','',:status,:created_at,'')";
+    $mt_rand = substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 5);
+    $date = date('Y-m-d');
+    $create = date('Y-m-d H:i:s');
+    $no = $date . $mt_rand;
 
+    $this->db->query($query);
+    $this->db->bind('id_periksa', $data['id']);
+    $this->db->bind('no_transaksi', $no);
+    $this->db->bind('total', $data['total']);
+    $this->db->bind('status', 0);
+    $this->db->bind('created_at', $create);
     $this->db->execute();
+
+    $query = "UPDATE periksa SET status=:status WHERE id =:id";
+    $this->db->query($query);
+    $this->db->bind('id', $data['id']);
+    $this->db->bind('status', 2);
+    $this->db->execute();
+
     return $this->db->rowCounts();
   }
   public function updateData($data)
   {
-    $query = "UPDATE transaksi SET no_transaksi = :no_transaksi,total=:total,bayar=:bayar,kembali=:kembali,status=:status WHERE id =:id";
+    $create = date('Y-m-d H:i:s');
+
+    $query = "UPDATE transaksi SET no_transaksi = :no_transaksi,total=:total,bayar=:bayar,kembali=:kembali,status=:status,updated_at=:updated_at WHERE id =:id";
     $this->db->query($query);
     $this->db->bind('id', $data['id']);
     $this->db->bind('no_transaksi', $data['no_transaksi']);
@@ -43,6 +56,7 @@ class TransaksiModel
     $this->db->bind('bayar', $data['bayar']);
     $this->db->bind('kembali', $data['kembali']);
     $this->db->bind('status', 1);
+    $this->db->bind('updated_at', $create);
 
     $this->db->execute();
     return $this->db->rowCounts();

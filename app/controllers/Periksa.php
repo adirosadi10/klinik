@@ -40,7 +40,7 @@ class Periksa extends Controller
   {
     if ($this->model('PeriksaModel')->insertData($_POST) > 0) {
       Flasher::setFlash('Obat', 'berhasil', 'ditambahkan', 'success');
-      header('Location: ' . BASE_URL . '/periksa/tambah');
+      header('Location: ' . BASE_URL . '/periksa/tambah/');
       exit;
     } else {
       Flasher::setFlash('Obat', 'gagal', 'ditambahkan', 'danger');

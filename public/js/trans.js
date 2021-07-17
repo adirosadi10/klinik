@@ -1,7 +1,5 @@
 $(document).ready(function () {
   $(".tampilModalUbah").on("click", function () {
-    $("#modalLabel").html("Pembayaran".data.no_transaksi);
-    $(".modal-footer button[type=submit]").html("Bayar");
     $(".modal-body form").attr(
       "action",
       "http://localhost/klinik/public/transaksi/update"
@@ -13,10 +11,10 @@ $(document).ready(function () {
       method: "post",
       dataType: "json",
       success: function (data) {
+        $("#no_transaksi").val(data.no_transaksi);
+
         $("#id").val(data.id);
         $("#total").val(data.total);
-        $("#bayar").val(data.bayar);
-        $("#kembali").val(data.kembali);
       },
     });
   });

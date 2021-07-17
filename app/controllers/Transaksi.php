@@ -20,7 +20,7 @@ class Transaksi extends Controller
   }
   public function create()
   {
-    if ($this->model('transaksiModel')->insertData($_POST) > 0) {
+    if ($this->model('TransaksiModel')->insertData($_POST) > 0) {
       Flasher::setFlash('transaksi', 'berhasil', 'ditambahkan', 'success');
       header('Location: ' . BASE_URL . '/transaksi');
       exit;
@@ -44,11 +44,11 @@ class Transaksi extends Controller
   }
   public function getId()
   {
-    echo json_encode($this->model('transaksiModel')->getDataById($_POST['id']));
+    echo json_encode($this->model('TransaksiModel')->getDataById($_POST['id']));
   }
   public function update()
   {
-    if ($this->model('transaksiModel')->updateData($_POST) > 0) {
+    if ($this->model('TransaksiModel')->updateData($_POST) > 0) {
       Flasher::setFlash('transaksi', 'berhasil', 'dibayar', 'success');
       header('Location: ' . BASE_URL . '/transaksi');
       exit;
