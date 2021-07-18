@@ -1,14 +1,15 @@
-<div class="card">
-  <div class="card-body">
-    <form class="row g-3">
-      <div class="col-auto">
-        <label for="month" class="visually-hidden">Periode</label>
-        <input type="month" class="form-control" id="month" name="month" required>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <input type="month" name="bulan" id="bulan">
+          <a href="" onclick="this.href='CetakBulanan/'+document.getElementById('bulan').value" target="_blank" class="btn btn-primary">
+            Cetak
+          </a>
+        </div>
       </div>
-      <div class="col-auto">
-        <button type="submit" class="btn btn-primary">Cetak</button>
-      </div>
-    </form>
+    </div>
   </div>
 </div>
 </div>

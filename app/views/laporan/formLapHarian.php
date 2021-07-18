@@ -1,14 +1,15 @@
-<div class="card">
-  <div class="card-body">
-    <form class="row g-3">
-      <div class="col-auto">
-        <label for="date" class="visually-hidden">Periode</label>
-        <input type="date" class="form-control" id="date" name="date" required>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <input type="date" name="tgl" id="tgl">
+          <a href="" onclick="this.href='CetakHarian/'+document.getElementById('tgl').value" target="_blank" class="btn btn-primary">
+            Cetak
+          </a>
+        </div>
       </div>
-      <div class="col-auto">
-        <button type="submit" class="btn btn-primary">Cetak</button>
-      </div>
-    </form>
+    </div>
   </div>
 </div>
 </div>

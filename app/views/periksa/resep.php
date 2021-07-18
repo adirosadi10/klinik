@@ -36,7 +36,6 @@
           <th scope="col">Subtotal</th>
         </tr>
       <tbody>
-
         <?php
         $b_obat = $data['total']['tot'];
         $b_jasa = intval($data['detail']['tarif']);
@@ -47,7 +46,6 @@
         <?php
         $no = 1;
         foreach ($data['data'] as $data) {  ?>
-
           <tr>
             <th scope="row"><?= $no++; ?></th>
             <td><?= $data['nama_obat']; ?></td>

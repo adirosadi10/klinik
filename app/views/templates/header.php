@@ -58,6 +58,7 @@
               Laporan
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="<?= BASE_URL; ?>/laporan/formResi">Cetak Transaksi</a></li>
               <li><a class="dropdown-item" href="<?= BASE_URL; ?>/laporan/formHarian">Harian</a></li>
               <li><a class="dropdown-item" href="<?= BASE_URL; ?>/laporan/formPeriodik">Periodik</a></li>
               <li><a class="dropdown-item" href="<?= BASE_URL; ?>/laporan/formBulanan">Bulanan</a></li>

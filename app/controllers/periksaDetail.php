@@ -21,7 +21,6 @@ class PeriksaDetail extends Controller
     $this->view('templates/header', $data,);
     $this->view('periksa/resep', $data);
     $this->view('templates/footer');
-    // var_dump($data['total']['tot']);
   }
   public function insert()
   {
