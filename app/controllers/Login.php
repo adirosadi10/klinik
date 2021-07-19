@@ -1,51 +1,65 @@
 <?php
 class Login extends Controller
 {
-  private $table = 'user';
-  private $db;
   public function __construct()
   {
     $this->db = new Database;
   }
   public function index()
   {
-    $data['title'] = 'Login';
-    $this->view('login/index', $data);
-    $this->view('templates/footer');
-  }
-  public function prosesLogin()
-  {
-    if (isset($_POST['login'])) {
-      $password = $_POST['password'];
-      $email = $_POST['email'];
+    $data = [
+      'title' => 'Login page',
+      'username' => '',
+      'password' => '',
+      'usernameError' => '',
+      'passwordError' => '',
+    ];
+    // check post
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-      $query = "SELECT * FROM user WHERE email =$email";
-      $this->db->query($query);
-      // $this->db->bind('email', $email);
-      $this->db->execute();
-      $count = $this->db->rowCounts();
-      if ($count == 0) {
-        Flasher::setFlash('Login', 'gagal', 'email salah', 'danger');
-        header('Location: ' . BASE_URL . '/login');
-        exit;
-      } else {
-        if (password_verify($password, $query["password"])) {
-          $_SESSION['username'] = $query['username'];
-          $_SESSION['level'] = $query['level'];
-          header('Location: ' . BASE_URL . '/home');
-          exit;
+      $data = [
+        'title' => 'Login',
+        'username' => trim($_POST['username']),
+        'password' => trim($_POST['password']),
+        'usernameError' => '',
+        'passwordError' => ''
+      ];
+      // validate
+      if (empty($data['username'])) {
+        $data['usernameError'] = 'Please enter username';
+      }
+      if (empty($data['password'])) {
+        $data['passwordError'] = 'Please enter password';
+      }
+      if (empty($data['username']) && empty($data['password'])) {
+        $user = $this->model('UserModel')->UserLogin($data['username'], $data['password']);
+        if ($user) {
+          $_SESSION['user_id'] = $user->id;
+          $_SESSION['username'] = $user->username;
+          $_SESSION['level'] = $user->level;
+          header('Location:' . BASE_URL . '/home/index');
         } else {
-          Flasher::setFlash('Login', 'gagal', 'password salah', 'danger');
-          header('Location: ' . BASE_URL . '/login');
-          exit;
+          $data['Error'] = 'Password atau Username salah, coba lagi ';
+          $this->view('login/index', $data);
         }
       }
+    } else {
+      $data = [
+        'title' => 'Login',
+        'username' => '',
+        'password' => '',
+        'usernameError' => '',
+        'passwordError' => '',
+      ];
     }
+    $this->view('login/index', $data);
   }
   public function logout()
   {
-    session_start();
-    session_destroy();
-    // header("Location: "."BASE_")
+    unset($_SESSION['user_id']);
+    unset($_SESSION['username']);
+    unset($_SESSION['level']);
+    header("Location: " . BASE_URL . '/Login/index');
   }
 }

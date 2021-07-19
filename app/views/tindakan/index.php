@@ -1,6 +1,18 @@
-<button type="button" class="modalTambah mt-2 btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambah">
-  Tambah
-</button>
+<div class="row">
+  <div class="col-auto">
+    <form action="<?= BASE_URL; ?>/tindakan/search" method="post">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Cari data..." id="keyword" name="keyword" autocomplete="off">
+        <button class="btn btn-primary" type="submit" id="tmblCari">Cari</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-auto">
+    <button type="button" class="btn btn-primary tombolModal" data-bs-toggle="modal" data-bs-target="#tambah">
+      Tambah
+    </button>
+  </div>
+</div>
 <div class="row mt-3">
   <?php Flasher::flash(); ?>
 </div>
@@ -8,10 +20,9 @@
   <thead>
     <tr>
       <th>No.</th>
-      <th>Id Tindakan</th>
-      <th>Username</th>
-      <th>Email</th>
-      <th>Level</th>
+      <th>Tindakan</th>
+      <th>Tarif</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -21,40 +32,17 @@
       <tr>
         <td><?= $no++; ?></td>
         <td><?= $tindakan['tindakan']; ?></td>
+        <td><?= $tindakan['tarif']; ?></td>
         <td>
-          <a class="tampilModalUbah" data-id="<?= $tindakan['id']; ?>" data-bs-toggle="modal" data-bs-target="#tambah">Edit</a> |
-          <a href="<?= BASE_URL; ?>/tindakan/delete/<?= $tindakan['id']; ?>" onclick="return confirm('Apakah anda yakin akan menghapus data?');">Hapus</a>
+          <span class="badge bg-success"><a style="text-decoration: none;color:white" class="tampilModalUbah" data-id="<?= $tindakan['id']; ?>" data-bs-toggle="modal" data-bs-target="#tambah">Edit</a></span> |
+          <span class="badge bg-danger"><a style="text-decoration: none;color:white" href="<?= BASE_URL; ?>/tindakan/delete/<?= $tindakan['id']; ?>" onclick="return confirm('Apakah anda yakin akan menghapus data?');">Hapus</a></span>
         </td>
       </tr>
     <?php } ?>
   </tbody>
 </table>
-<div class="modal fade" id="tambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalLabel">Tambah Data Tindakan</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="<?= BASE_URL; ?>/tindakan/create" method="POST">
-          <input type="hidden" id="id" name="id">
-          <div class="mb-3">
-            <label for="tindakan" class="form-label">Tindakan</label>
-            <input type="text" required class="form-control" id="tindakan" name="tindakan">
-          </div>
-          <div class="mb-3">
-            <label for="tarif" class="form-label">Tarif</label>
-            <input type="number" required class="form-control" id="tarif" name="tarif">
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Tambah</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+<?php
+include_once('form.php');
+?>
 </div>
 <script src="<?= BASE_URL; ?>/js/tindakan.js" type="text/javascript"></script>

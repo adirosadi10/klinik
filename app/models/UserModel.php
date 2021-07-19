@@ -59,7 +59,25 @@ class UserModel
     $this->db->execute();
     return $this->db->rowCounts();
   }
-  public function loginUser()
+  public function UserLogin($username, $password)
   {
+    $this->db->query('SELECT * FROM user WHERE username=:username');
+    $this->db->bind('username', $username);
+    $row = $this->db->single();
+    $hashpass = $row['password'];
+    var_dump($row);
+    if (password_verify($password, $hashpass)) {
+      return $row;
+    } else {
+      return false;
+    }
+  }
+  public function searchData()
+  {
+    $keyword = $_POST['keyword'];
+    $query = "SELECT * FROM user WHERE username LIKE :keyword";
+    $this->db->query($query);
+    $this->db->bind('keyword', "%$keyword%");
+    return $this->db->resultSet();
   }
 }

@@ -1,7 +1,7 @@
 $(document).ready(function () {
   $(".tampilModalProses").on("click", function () {
-    $("#modalLabel").html("Edit Data Obat");
-    $(".modal-footer button[type=submit]").html("Edit");
+    $("#modalLabel").html("Tindakan yang dilakukan");
+    $(".modal-footer button[type=submit]").html("Proses");
     $(".modal-body form").attr(
       "action",
       "http://localhost/klinik/public/periksa/update"
@@ -14,7 +14,7 @@ $(document).ready(function () {
       dataType: "json",
       success: function (data) {
         $("#id").val(data.id);
-        $("#id_daftar").val(data.id_daftar);
+        $("#id_daftar").val(data.no_daftar);
       },
     });
   });

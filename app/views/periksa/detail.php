@@ -2,10 +2,9 @@
   <thead>
     <tr>
       <th>No.</th>
-      <th>Id Pegawai</th>
-      <th>Username</th>
-      <th>Email</th>
-      <th>Level</th>
+      <th>No Pendaftaran</th>
+      <th>Tindakan</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -14,11 +13,10 @@
     foreach ($data['detail'] as $detail) { ?>
       <tr>
         <td><?= $no++; ?></td>
-        <td><?= $detail['id']; ?></td>
-        <td><?= $detail['id_tindakan']; ?></td>
+        <td><?= $detail['no_daftar']; ?></td>
+        <td><?= $detail['tindakan']; ?></td>
         <td>
-          <a href="<?= BASE_URL ?>/periksaDetail/resep/<?= $detail['id'] ?>">Resep obat</a>
-
+          <span class="badge bg-success"><a style="text-decoration: none;color:white" href="<?= BASE_URL ?>/periksaDetail/resep/<?= $detail['id'] ?>">Resep obat</a></span>
         </td>
       </tr>
     <?php } ?>

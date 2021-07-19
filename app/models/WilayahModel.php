@@ -55,4 +55,12 @@ class WilayahModel
     $this->db->execute();
     return $this->db->rowCounts();
   }
+  public function searchData()
+  {
+    $keyword = $_POST['keyword'];
+    $query = "SELECT * FROM wilayah WHERE kelurahan LIKE :keyword";
+    $this->db->query($query);
+    $this->db->bind('keyword', "%$keyword%");
+    return $this->db->resultSet();
+  }
 }

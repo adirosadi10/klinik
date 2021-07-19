@@ -5,6 +5,7 @@ class User extends Controller
   {
     $data['title'] = 'User';
     $data['subTitle'] = 'Daftar User';
+    $data['pegawai'] = $this->model('PegawaiModel')->getAll();
     $data['user'] = $this->model('UserModel')->getAll();
     $this->view('templates/header', $data);
     $this->view('user/index', $data);
@@ -59,5 +60,15 @@ class User extends Controller
       header('Location: ' . BASE_URL . '/user');
       exit;
     }
+  }
+  public function search()
+  {
+    $data['title'] = 'User';
+    $data['subTitle'] = 'Daftar User';
+    $data['pegawai'] = $this->model('PegawaiModel')->getAll();
+    $data['user'] = $this->model('UserModel')->searchData();
+    $this->view('templates/header', $data);
+    $this->view('user/index', $data);
+    $this->view('templates/footer');
   }
 }

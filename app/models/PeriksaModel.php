@@ -10,14 +10,8 @@ class PeriksaModel
   }
   public function getAll()
   {
-    $this->db->query('SELECT * FROM periksa WHERE status =:status');
+    $this->db->query('SELECT periksa.*, pendaftaran.no_daftar FROM periksa JOIN pendaftaran ON pendaftaran.id=periksa.id_daftar WHERE periksa.status =:status');
     $this->db->bind('status', 0);
-    return $this->db->resultSet();
-  }
-  public function getDosis()
-  {
-    $this->db->query('SELECT * FROM periksa WHERE status =:status ORDER BY id DESC');
-    $this->db->bind('status', 1);
     return $this->db->resultSet();
   }
   public function getDetail($id)
@@ -39,7 +33,7 @@ class PeriksaModel
   }
   public function getDataById($id)
   {
-    $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
+    $this->db->query('SELECT periksa.*, pendaftaran.no_daftar FROM periksa JOIN pendaftaran ON pendaftaran.id=periksa.id_daftar WHERE periksa.id=:id');
     $this->db->bind('id', $id);
     return $this->db->single();
   }

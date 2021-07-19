@@ -58,4 +58,13 @@ class Pegawai extends Controller
       exit;
     }
   }
+  public function search()
+  {
+    $data['title'] = 'Pegawai';
+    $data['subTitle'] = 'Daftar Pegawai';
+    $data['pegawai'] = $this->model('PegawaiModel')->searchData();
+    $this->view('templates/header', $data);
+    $this->view('pegawai/index', $data);
+    $this->view('templates/footer');
+  }
 }

@@ -58,4 +58,13 @@ class Wilayah extends Controller
       exit;
     }
   }
+  public function search()
+  {
+    $data['title'] = 'Wilayah';
+    $data['subTitle'] = 'Daftar Wilayah';
+    $data['wilayah'] = $this->model('WilayahModel')->searchData();
+    $this->view('templates/header', $data);
+    $this->view('wilayah/index', $data);
+    $this->view('templates/footer');
+  }
 }

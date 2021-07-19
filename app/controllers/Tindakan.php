@@ -58,4 +58,13 @@ class Tindakan extends Controller
       exit;
     }
   }
+  public function search()
+  {
+    $data['title'] = 'Tindakan';
+    $data['subTitle'] = 'Daftar Tindakan';
+    $data['tindakan'] = $this->model('TindakanModel')->searchData();
+    $this->view('templates/header', $data);
+    $this->view('tindakan/index', $data);
+    $this->view('templates/footer');
+  }
 }

@@ -18,7 +18,7 @@
         <input type="number" class="form-control" name="jumlah" id="jumlah" value="">
       </div>
       <div class="col-3 mt-4">
-        <button type="submit" class="btn btn-primary">Confirm identity</button>
+        <button type="submit" class="btn btn-primary">Tambah</button>
       </div>
     </form>
   </div>

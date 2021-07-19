@@ -24,10 +24,9 @@ class PeriksaDetail extends Controller
   }
   public function insert()
   {
-
     if ($this->model('PeriksaDetailModel')->insertData($_POST) > 0) {
       Flasher::setFlash('Obat', 'berhasil', 'ditambahkan', 'success');
-      header('Location: ' . BASE_URL . '/periksaDetail/resep/id');
+      header('Location: ' . BASE_URL . '/periksaDetail');
       exit;
     } else {
       Flasher::setFlash('Obat', 'gagal', 'ditambahkan', 'danger');
