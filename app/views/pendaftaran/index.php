@@ -5,7 +5,7 @@
   <?php Flasher::flash(); ?>
 </div>
 <table class="table table-hover">
-  <thead>
+  <thead class="table-primary">
     <tr>
       <th>No.</th>
       <th>Nama Pasien</th>
@@ -37,4 +37,4 @@
 include_once('form.php');
 ?>
 </div>
-<script src="<?= BASE_URL; ?>/js/pendaftaran.js" type="text/javascript"></script>
+<script src="<?= BASE_URL; ?>/js/pendaftarans.js" type="text/javascript"></script>

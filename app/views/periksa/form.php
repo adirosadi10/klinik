@@ -8,9 +8,10 @@
       <div class="modal-body">
         <form action="<?= BASE_URL; ?>/periksa/update" method="POST">
           <input type="hidden" id="id" name="id">
+          <input type="hidden" id="id_daftar" name="id_daftar">
           <div class="mb-3">
             <label for="id_daftar" class="form-label">No. Pendaftaran</label>
-            <input type="number" class="form-control" id="id_daftar" name="id_daftar" value="" readonly>
+            <input type="text" class="form-control" id="no_daftar" name="no_daftar" value="" readonly>
           </div>
           <div class="mb-3">
             <label for="id_tindakan" class="form-label">Tindakan</label>

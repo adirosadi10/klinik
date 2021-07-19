@@ -5,7 +5,6 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <!-- Bootstrap CSS -->
   <style type="text/css">
     @media print {
@@ -16,11 +15,9 @@
       }
     }
   </style>
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
   <title id="print">Klinik Sehat | <?= $data['title']; ?></title>
 </head>
 
@@ -39,12 +36,9 @@
                   Klinik Sehat.
                   <small class="float-end">Date: <?= date('d-m-Y')  ?></small>
                 </div>
-              </div>
-              <!-- /.col -->
-            </div>
-            <!-- info row -->
-
-            <div class="row invoice-info">
+              </div><!-- /.col -->
+            </div><!-- info row -->
+            <div class="row mt-3 invoice-info">
               <div class="col-7">
                 <div class="row">
                   <div class="col-5 invoice-col">
@@ -52,8 +46,7 @@
                     Nama Pasien<br>
                     Tempat, tanggal lahir<br>
                     Alamat
-                  </div>
-                  <!-- /.col -->
+                  </div><!-- /.col -->
                   <div class="col-7 invoice-col">
                     <?php foreach ($data['cetak'] as $cetak) { ?>
                       : <?= $cetak['no_transaksi']; ?><br>
@@ -68,7 +61,6 @@
                       $kembali = $cetak['kembali'];
                       ?>
                     <?php } ?>
-
                   </div>
                 </div>
               </div>
@@ -77,29 +69,25 @@
                   <div class="col-5 invoice-col">
                     Tindakan<br>
                     Keterangan
-                  </div>
-                  <!-- /.col -->
+                  </div><!-- /.col -->
                   <div class="col-7 invoice-col">
                     : <?= $tindakan; ?><br>
                     : <?= $keterangan; ?>
                   </div>
                 </div>
               </div>
-
             </div>
-
-            <div class="row">
+            <div class="row mt-3">
               <div class="col-12 table-responsive">
                 <table class="table table-striped">
-                  <thead>
-
+                  <thead class="table-primary">
                     <tr>
-                      <th>Qty</th>
-                      <th>Product</th>
-                      <th>Serial #</th>
-                      <th>Product</th>
-                      <th>Serial #</th>
-                      <th>Description</th>
+                      <th>No.</th>
+                      <th>No. Obat</th>
+                      <th>Nama Obat</th>
+                      <th>Jenis</th>
+                      <th>Harga</th>
+                      <th>Jumlah</th>
                       <th>Subtotal</th>
                     </tr>
                   </thead>
@@ -111,24 +99,19 @@
                         <td><?= $data['no_obat']; ?></td>
                         <td><?= $data['nama_obat']; ?></td>
                         <td><?= $data['jenis']; ?></td>
-                        <td><?= $data['harga']; ?></td>
+                        <td><?= number_format($data['harga'], 0, ',', '.'); ?></td>
                         <td><?= $data['jumlah']; ?></td>
-                        <td><?= $data['harga'] * $data['jumlah']; ?></td>
+                        <td><?= number_format($data['harga'] * $data['jumlah'], 0, ',', '.'); ?></td>
                       </tr>
                     <?php } ?>
                   </tbody>
                 </table>
-              </div>
-              <!-- /.col -->
-            </div>
-            <!-- /.row -->
-
+              </div><!-- /.col -->
+            </div><!-- /.row -->
             <div class="row">
               <!-- accepted payments column -->
               <div class="col-7">
-
-              </div>
-              <!-- /.col -->
+              </div><!-- /.col -->
               <div class="col-5">
                 <div class="table-responsive">
                   <table class="table">
@@ -154,19 +137,14 @@
                     </tr>
                   </table>
                   <a href="" onclick="window.print();" id="print" target="_blank" class="btn  btn-outline-primary"><i class="fas fa-print"></i> Print</a>
-
                 </div>
               </div>
-              <!-- /.col -->
             </div>
-
           </div>
-          <!-- /.invoice -->
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </section>
-  <!-- /.content -->
   </div>
   <script>
     window.print();

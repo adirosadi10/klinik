@@ -5,7 +5,7 @@ class Home extends Controller
   public function index()
   {
     $data['title'] = 'HOME';
-    $data['subTitle'] = 'Daftar User';
+    $data['subTitle'] = 'HOME';
     $data['kunjungan'] = $this->model('HomeModel')->getKunjungan();
     $data['tunggu'] = $this->model('HomeModel')->getTunggu();
     $data['total'] = $this->model('HomeModel')->getTotal();

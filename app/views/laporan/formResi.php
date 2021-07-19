@@ -18,7 +18,7 @@
         <td><?= $resi['nama_pasien']; ?></td>
         <td><?= $resi['alamat']; ?></td>
         <td>
-          <a target="_blank" href="<?= BASE_URL; ?>/laporan/CetakResi/<?= $resi['trans_id']; ?>">Cetak</a>
+          <span class="badge bg-success"><a style="text-decoration: none;color:white" target="_blank" href="<?= BASE_URL; ?>/laporan/CetakResi/<?= $resi['trans_id']; ?>">Cetak</a></span>
         </td>
       </tr>
     <?php } ?>

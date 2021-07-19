@@ -17,7 +17,7 @@
   <?php Flasher::flash(); ?>
 </div>
 <table class="table table-hover">
-  <thead>
+  <thead class="table-primary">
     <tr>
       <th>No.</th>
       <th>Tindakan</th>

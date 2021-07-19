@@ -23,10 +23,13 @@ class PendaftaranModel
   }
   public function insertData($data)
   {
+    $mt_rand = substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 5);
+    $create = date('Ymd');
+    $no = 'KP' . $create . $mt_rand;
     $date = date('now');
     $query = "INSERT INTO pendaftaran VALUES ('',:no_daftar,:nama_pasien,:jk,:tmp_lahir,:tgl_lahir,:id_wilayah,:alamat,:no_hp,:status,:created_at)";
     $this->db->query($query);
-    $this->db->bind('no_daftar', $data['no_daftar']);
+    $this->db->bind('no_daftar', $no);
     $this->db->bind('nama_pasien', $data['nama_pasien']);
     $this->db->bind('jk', $data['jk']);
     $this->db->bind('tmp_lahir', $data['tmp_lahir']);
@@ -50,9 +53,8 @@ class PendaftaranModel
 
     $periksa = "INSERT INTO periksa VALUES ('',:id_daftar,'','',:status,:created_at)";
     $date = date('now');
-    $id_daftar = $data['id'];
     $this->db->query($periksa);
-    $this->db->bind('id_daftar', $id_daftar);
+    $this->db->bind('id_daftar', $data['id']);
     $this->db->bind('status', 0);
     $this->db->bind('created_at', $date);
     $this->db->execute();

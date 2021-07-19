@@ -8,9 +8,9 @@
       <div class="modal-body">
         <form action="<?= BASE_URL; ?>/pendaftaran/create" method="POST">
           <input type="hidden" id="id" name="id">
-          <div class="mb-3">
+          <div id="Gno_daftar" class="mb-3">
             <label for="no_daftar" class="form-label">No. pendaftaran</label>
-            <input type="number" class="form-control" id="no_daftar" name="no_daftar">
+            <input type="text" class="form-control" id="no_daftar" name="no_daftar">
           </div>
           <div id="Gnama_pasien" class="mb-3">
             <label for="nama_pasien" class="form-label">Nama Pasien</label>

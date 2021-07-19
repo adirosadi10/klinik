@@ -14,7 +14,8 @@ $(document).ready(function () {
       dataType: "json",
       success: function (data) {
         $("#id").val(data.id);
-        $("#id_daftar").val(data.no_daftar);
+        $("#id_daftar").val(data.id_daftar);
+        $("#no_daftar").val(data.no_daftar);
       },
     });
   });
